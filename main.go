@@ -4,11 +4,9 @@ import (
 	"fmt"
 	"regexp"
 	"strings"
-)
 
-func splitter(r rune) bool {
-	return r == '+' || r == '-'
-}
+	"github.com/osalmine/computorV1/utils"
+)
 
 func main() {
 	str := "    5     *    X   ^0   + 4 *  X^ 1 -9.3*X^2   =  1* X ^ 0"
@@ -16,7 +14,7 @@ func main() {
 	s := strings.Join(strings.Fields(str), "")
 	fmt.Println(s)
 	content := []byte(s)
-	re := regexp.MustCompile("\\^").FindAllIndex(content, -1)
+	re := regexp.MustCompile(`\^`).FindAllIndex(content, -1)
 	fmt.Println("POWERS:", re)
 	for i, val := range re {
 		fmt.Println("INDEX:", i, "strIndex 0:", string(s[val[0]]), "strIndex 1:", string(s[val[1]]))
@@ -28,9 +26,9 @@ func main() {
 	// fmt.Println("POWERS:", powers)
 	leftRight := strings.Split(s, "=")
 	fmt.Println("leftRight:", leftRight)
-	splitRight := strings.FieldsFunc(leftRight[0], splitter)
+	splitRight := strings.FieldsFunc(leftRight[0], utils.Splitter)
 	fmt.Println("right side:", splitRight)
-	splitLeft := strings.FieldsFunc(leftRight[1], splitter)
+	splitLeft := strings.FieldsFunc(leftRight[1], utils.Splitter)
 	fmt.Println("left side:", splitLeft)
 	fmt.Println(s[len(s)-1])
 }
