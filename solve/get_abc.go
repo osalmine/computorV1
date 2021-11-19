@@ -1,20 +1,27 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   split_by_equal.go                                  :+:      :+:    :+:   */
+/*   get_abc.go                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: osalmine <osalmine@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2021/10/30 23:47:57 by osalmine          #+#    #+#             */
-/*   Updated: 2021/10/30 23:47:57 by osalmine         ###   ########.fr       */
+/*   Created: 2021/11/19 21:17:07 by osalmine          #+#    #+#             */
+/*   Updated: 2021/11/19 21:17:13 by osalmine         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-package utils
+package solve
 
-import "strings"
-
-func SplitByEqual(stringToSplit string) []string {
-	splittedString := strings.Split(stringToSplit, "=")
-	return splittedString
+func getABC(cells []Cell) (float64, float64, float64) {
+	var a, b, c float64
+	for _, cell := range cells {
+		if cell.Exponent == 2 {
+			a = cell.Coefficient
+		} else if cell.Exponent == 1 {
+			b = cell.Coefficient
+		} else {
+			c = cell.Coefficient
+		}
+	}
+	return a, b, c
 }

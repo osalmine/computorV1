@@ -1,20 +1,24 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   split_by_equal.go                                  :+:      :+:    :+:   */
+/*   print_on_option.go                                 :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: osalmine <osalmine@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2021/10/30 23:47:57 by osalmine          #+#    #+#             */
-/*   Updated: 2021/10/30 23:47:57 by osalmine         ###   ########.fr       */
+/*   Created: 2021/11/19 13:29:50 by osalmine          #+#    #+#             */
+/*   Updated: 2021/11/19 13:34:56 by osalmine         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 package utils
 
-import "strings"
+import "fmt"
 
-func SplitByEqual(stringToSplit string) []string {
-	splittedString := strings.Split(stringToSplit, "=")
-	return splittedString
+func PrintOnOption(option bool, text string, rest ...interface{}) {
+	if option {
+		fmt.Print(text)
+		fmt.Print(" ")
+		fmt.Print(rest...)
+		fmt.Print("\n")
+	}
 }

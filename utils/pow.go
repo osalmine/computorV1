@@ -1,20 +1,20 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   split_by_equal.go                                  :+:      :+:    :+:   */
+/*   pow.go                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: osalmine <osalmine@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2021/10/30 23:47:57 by osalmine          #+#    #+#             */
-/*   Updated: 2021/10/30 23:47:57 by osalmine         ###   ########.fr       */
+/*   Created: 2021/11/19 21:11:34 by osalmine          #+#    #+#             */
+/*   Updated: 2021/11/19 21:11:43 by osalmine         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 package utils
 
-import "strings"
-
-func SplitByEqual(stringToSplit string) []string {
-	splittedString := strings.Split(stringToSplit, "=")
-	return splittedString
+func Pow(x float64, y int) float64 {
+	for i := 1; i < y; i++ {
+		x *= x
+	}
+	return x
 }
