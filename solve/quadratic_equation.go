@@ -6,14 +6,14 @@
 /*   By: osalmine <osalmine@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/11/19 21:18:15 by osalmine          #+#    #+#             */
-/*   Updated: 2021/11/19 21:27:00 by osalmine         ###   ########.fr       */
+/*   Updated: 2021/11/20 17:33:01 by osalmine         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 package solve
 
 import (
-	"fmt"
+	"log"
 	"math/cmplx"
 
 	"github.com/osalmine/computorV1/utils"
@@ -31,21 +31,24 @@ func solveNegativeDiscriminant(computor Computor, equ equation) {
 		utils.PrintOnOption(!computor.Options.Silent, "Complex solutions:")
 		x1 := (complex(-equ.b, 0) - 1i*cmplx.Sqrt(complex(-equ.discriminant, 0))) / (2 * complex(equ.a, 0))
 		x2 := (complex(-equ.b, 0) + 1i*cmplx.Sqrt(complex(-equ.discriminant, 0))) / (2 * complex(equ.a, 0))
-		fmt.Printf("%.6g\n%.6g\n", x1, x2)
+		log.SetFlags(0)
+		log.Printf("%.6g\n%.6g\n", x1, x2)
 	}
 }
 
 func solveZeroDiscriminant(computor Computor, equ equation) {
 	utils.PrintOnOption(!computor.Options.Silent, "Discriminant is strictly zero, the one solution is:")
 	x := -equ.b / (2 * equ.a)
-	fmt.Printf("%.6g\n", x)
+	log.SetFlags(0)
+	log.Printf("%.6g\n", x)
 }
 
 func solvePositiveDiscriminant(computor Computor, equ equation) {
 	utils.PrintOnOption(!computor.Options.Silent, "Discriminant is strictly positive, the two solutions are:")
 	x1 := (-equ.b - ft_sqrt(equ.discriminant)) / (2 * equ.a)
 	x2 := (-equ.b + ft_sqrt(equ.discriminant)) / (2 * equ.a)
-	fmt.Printf("%.6g\n%.6g\n", x1, x2)
+	log.SetFlags(0)
+	log.Printf("%.6g\n%.6g\n", x1, x2)
 }
 
 func calculateQuadraticEquation(computor Computor) {

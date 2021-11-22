@@ -6,7 +6,7 @@
 #    By: osalmine <osalmine@student.hive.fi>        +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2021/11/03 19:00:13 by osalmine          #+#    #+#              #
-#    Updated: 2021/11/19 21:05:44 by osalmine         ###   ########.fr        #
+#    Updated: 2021/11/22 17:21:11 by osalmine         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -23,4 +23,7 @@ fclean:
 
 re: fclean all
 
-.PHONY: all clean fclean re
+test:
+	go test ./test/solve -v
+
+.PHONY: all clean fclean re test
