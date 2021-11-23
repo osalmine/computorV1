@@ -6,7 +6,7 @@
 /*   By: osalmine <osalmine@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/11/19 21:14:36 by osalmine          #+#    #+#             */
-/*   Updated: 2021/11/19 21:14:42 by osalmine         ###   ########.fr       */
+/*   Updated: 2021/11/23 13:47:16 by osalmine         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,12 +19,9 @@ import (
 )
 
 func parseToRawCells(input []string) []RawCell {
-	// fmt.Println("parseToRawCells INPUT", input)
 	var RawCells []RawCell
 	for _, str := range input {
-		// fmt.Println("parseToRawCells STR", str)
 		splitByMultiplication := utils.SplitByMultiplication(str)
-		// fmt.Println("SPLIT BY MULTIPLICATION", splitByMultiplication)
 		RawCells = append(RawCells, RawCell{
 			VariableCount: countVariables(str),
 			Coefficients:  getCoefficients(splitByMultiplication),
@@ -35,6 +32,5 @@ func parseToRawCells(input []string) []RawCell {
 			},
 		})
 	}
-	// fmt.Printf("RawCells %+v\n", RawCells)
 	return RawCells
 }

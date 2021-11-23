@@ -6,14 +6,13 @@
 /*   By: osalmine <osalmine@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/11/19 21:15:26 by osalmine          #+#    #+#             */
-/*   Updated: 2021/11/19 21:16:03 by osalmine         ###   ########.fr       */
+/*   Updated: 2021/11/23 13:47:42 by osalmine         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 package parse
 
 func checkForVariable(rawCell RawCell) bool {
-	// fmt.Printf("CHECK FOR VAR RAW CELL %+v\n", rawCell)
 	return rawCell.VariableCount != 0
 }
 
@@ -30,8 +29,6 @@ func transformRawCellExponents(rawCell RawCell) int {
 	for _, exponent := range rawCell.Exponents {
 		result += exponent
 	}
-	// fmt.Printf("RAW CELL %+v\n", rawCell)
-	// fmt.Println("RESULT", result)
 	return result
 }
 
@@ -45,6 +42,5 @@ func transformRawCellsToCells(rawCells []RawCell) []Cell {
 			Visual:      rawCell.Visual,
 		})
 	}
-	// fmt.Printf("\n\nCELLS: %+v\n", Cells)
 	return Cells
 }

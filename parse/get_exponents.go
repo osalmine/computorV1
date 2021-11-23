@@ -6,7 +6,7 @@
 /*   By: osalmine <osalmine@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/11/19 21:13:20 by osalmine          #+#    #+#             */
-/*   Updated: 2021/11/19 21:13:28 by osalmine         ###   ########.fr       */
+/*   Updated: 2021/11/23 13:47:05 by osalmine         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,6 +32,5 @@ func getExponents(input []string) []int {
 			}
 		}
 	}
-	// fmt.Printf("EXPONENTS: %+v\n", exponents)
 	return exponents
 }
