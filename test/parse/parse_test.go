@@ -6,7 +6,7 @@
 /*   By: osalmine <osalmine@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/11/23 13:49:52 by osalmine          #+#    #+#             */
-/*   Updated: 2021/11/23 15:38:08 by osalmine         ###   ########.fr       */
+/*   Updated: 2021/11/23 16:59:01 by osalmine         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -35,7 +35,7 @@ func TestParse(t *testing.T) {
 			[]Cell{
 				{Coefficient: -4, Exponent: 0, Variable: false, Visual: V{CapitalX: false, DisplayExponent: false}},
 				{Coefficient: 5, Exponent: 1, Variable: true, Visual: V{CapitalX: false, DisplayExponent: false}},
-				{Coefficient: 1, Exponent: 2, Variable: true, Visual: V{CapitalX: false, DisplayExponent: true}},
+				{Coefficient: 3, Exponent: 2, Variable: true, Visual: V{CapitalX: false, DisplayExponent: true}},
 				{Coefficient: -0, Exponent: 0, Variable: false, Visual: V{CapitalX: false, DisplayExponent: false}},
 			},
 		},
