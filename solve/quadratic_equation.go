@@ -6,7 +6,7 @@
 /*   By: osalmine <osalmine@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/11/19 21:18:15 by osalmine          #+#    #+#             */
-/*   Updated: 2021/11/20 17:33:01 by osalmine         ###   ########.fr       */
+/*   Updated: 2021/11/22 17:23:05 by osalmine         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -55,6 +55,7 @@ func calculateQuadraticEquation(computor Computor) {
 	a, b, c := getABC(computor.Cells)
 	discriminant := b*b - 4*a*c
 	equation := equation{a, b, c, discriminant}
+	utils.PrintOnOption(computor.Options.Verbose, "Quadratic equation")
 	if discriminant < 0 {
 		solveNegativeDiscriminant(computor, equation)
 	} else if discriminant == 0 {

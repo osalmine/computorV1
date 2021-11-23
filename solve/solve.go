@@ -6,7 +6,7 @@
 /*   By: osalmine <osalmine@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/11/19 20:48:24 by osalmine          #+#    #+#             */
-/*   Updated: 2021/11/20 17:32:31 by osalmine         ###   ########.fr       */
+/*   Updated: 2021/11/22 17:23:32 by osalmine         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,7 +26,6 @@ func Solve(computor Computor) {
 		return
 	}
 	utils.PrintOnOption(computor.Options.Verbose, "Discriminant:", calculateDiscriminant(computor.Cells))
-	// fmt.Println("SQRT discriminant: ", ft_sqrt(discriminant))
 	if computor.PolynomialDegree == 2 {
 		calculateQuadraticEquation(computor)
 	} else if computor.PolynomialDegree == 1 {

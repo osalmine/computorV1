@@ -6,7 +6,7 @@
 /*   By: osalmine <osalmine@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/10/30 23:47:32 by osalmine          #+#    #+#             */
-/*   Updated: 2021/11/19 22:37:52 by osalmine         ###   ########.fr       */
+/*   Updated: 2021/11/22 17:24:22 by osalmine         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -38,7 +38,7 @@ func main() {
 	// str := "42 * X^0 = 42 * X^0"
 	// str := "5 + 4 * X + X^2= X^2"
 	// str := "x^2 - x + 5 * x + 9 = 0" //    DISCRIMINANT 0
-	cells := parse.Parse(str)
+	cells := parse.Parse(str, options)
 	// fmt.Println("Parsing done")
 	cells = parse.CombineCells(cells)
 	// fmt.Println("Combining done")
