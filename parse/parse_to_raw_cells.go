@@ -6,7 +6,7 @@
 /*   By: osalmine <osalmine@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/11/19 21:14:36 by osalmine          #+#    #+#             */
-/*   Updated: 2021/11/23 17:11:27 by osalmine         ###   ########.fr       */
+/*   Updated: 2021/11/23 17:12:15 by osalmine         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,7 +22,6 @@ func parseToRawCells(input []string) []RawCell {
 	var RawCells []RawCell
 	for _, str := range input {
 		splitByMultiplication := utils.SplitByMultiplication(str)
-		// fmt.Println("splitByMultiplication:", splitByMultiplication)
 		RawCells = append(RawCells, RawCell{
 			VariableCount: countVariables(str),
 			Coefficients:  getCoefficients(splitByMultiplication),
