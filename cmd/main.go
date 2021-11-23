@@ -6,7 +6,7 @@
 /*   By: osalmine <osalmine@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/10/30 23:47:32 by osalmine          #+#    #+#             */
-/*   Updated: 2021/11/22 17:24:22 by osalmine         ###   ########.fr       */
+/*   Updated: 2021/11/23 13:29:00 by osalmine         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -39,15 +39,9 @@ func main() {
 	// str := "5 + 4 * X + X^2= X^2"
 	// str := "x^2 - x + 5 * x + 9 = 0" //    DISCRIMINANT 0
 	cells := parse.Parse(str, options)
-	// fmt.Println("Parsing done")
 	cells = parse.CombineCells(cells)
-	// fmt.Println("Combining done")
-	// fmt.Printf("CELLS: %+v\n", cells)
 	computor := utils.ComposeComputor(cells, options)
-	if !computor.Options.Silent {
-		utils.PrintReducedForm(cells)
-	}
-	// fmt.Printf("COMPUTOR: %+v\n", computor)
+	utils.PrintReducedForm(computor)
 	utils.PrintPolynomialDegree(computor)
 	solve.Solve(computor)
 }

@@ -6,7 +6,7 @@
 /*   By: osalmine <osalmine@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/10/30 23:47:39 by osalmine          #+#    #+#             */
-/*   Updated: 2021/11/19 21:00:51 by osalmine         ###   ########.fr       */
+/*   Updated: 2021/11/23 13:28:52 by osalmine         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -108,7 +108,9 @@ func cellsToString(cells []computorV1.Cell) string {
 	return cellsString
 }
 
-func PrintReducedForm(cells []computorV1.Cell) {
-	sortedCells := sortCells(cells)
-	fmt.Printf("Reduced form: %+v\n", cellsToString(sortedCells))
+func PrintReducedForm(computor computorV1.Computor) {
+	if !computor.Options.Silent {
+		sortedCells := sortCells(computor.Cells)
+		fmt.Printf("Reduced form: %+v\n", cellsToString(sortedCells))
+	}
 }
