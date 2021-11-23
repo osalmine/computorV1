@@ -6,7 +6,7 @@
 /*   By: osalmine <osalmine@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/10/30 23:47:32 by osalmine          #+#    #+#             */
-/*   Updated: 2021/11/23 13:32:53 by osalmine         ###   ########.fr       */
+/*   Updated: 2021/11/23 15:42:13 by osalmine         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,15 +29,6 @@ func main() {
 		utils.PrintHelp()
 		return
 	}
-	// str := "    -5*2     *    X   ^0   + 4 *  X^ 1 -9.3*X^2 + X * X - 3^2   =  1* X ^ 0"
-	// str := "5 + 4 * X^1 - 9.3 * X^2 = 1 * X^0"
-	// str := "5 + 4 * X^1 - 9 * X^2 = 1 * X^0"
-	// str := "4 * X^1 - 9.3 * X^2 + 7*X^42 = 4*X^42+3*X^42"
-	// str := "5 * X^0 + 4 * X^1 = 4 * X^0"
-	// str := "5 + 4 * X = 4"
-	// str := "42 * X^0 = 42 * X^0"
-	// str := "5 + 4 * X + X^2= X^2"
-	// str := "x^2 - x + 5 * x + 9 = 0" //    DISCRIMINANT 0
 	cells := parse.Parse(str, options)
 	cells = parse.CombineCells(cells, options)
 	computor := utils.ComposeComputor(cells, options)
