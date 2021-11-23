@@ -6,11 +6,17 @@
 /*   By: osalmine <osalmine@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/10/30 23:47:42 by osalmine          #+#    #+#             */
-/*   Updated: 2021/11/19 21:11:18 by osalmine         ###   ########.fr       */
+/*   Updated: 2021/11/23 13:44:22 by osalmine         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 package parse
+
+import (
+	"fmt"
+
+	"github.com/osalmine/computorV1/utils"
+)
 
 func isExponentCombined(combinedExponents []int, exponent int) bool {
 	for _, combinedExponent := range combinedExponents {
@@ -31,23 +37,17 @@ func combineTwoCells(cell1 Cell, cell2 Cell) Cell {
 	return combinedCell
 }
 
-func CombineCells(cells []Cell) []Cell {
-	// fmt.Printf("\n\nCOMBINING\n\n")
+func CombineCells(cells []Cell, options Options) []Cell {
 	var combinedCells []Cell
 	var combinedExponents []int
 	for currentCellIndex, cell := range cells {
-		// fmt.Printf("\nCELL: %+v\n", cell)
 		combinationCell := cell
 		currentCellExponent := cell.Exponent
-		// fmt.Printf("combinationCell:\t%+v\n", combinationCell)
 		for _, nextCell := range cells[currentCellIndex+1:] {
-			// fmt.Printf("NEXT CELL:\t\t%+v\n", nextCell)
 			if currentCellExponent == nextCell.Exponent &&
 				!isExponentCombined(combinedExponents, currentCellExponent) {
-				// fmt.Println("COMBINATION FOUND")
 				combinationCell = combineTwoCells(combinationCell, nextCell)
 				currentCellIndex++
-				// fmt.Printf("done combinationCell:\t%+v\n", combinationCell)
 			}
 		}
 		if combinationCell.Coefficient != 0 &&
@@ -55,8 +55,11 @@ func CombineCells(cells []Cell) []Cell {
 			combinedCells = append(combinedCells, combinationCell)
 		}
 		combinedExponents = append(combinedExponents, currentCellExponent)
-		// fmt.Println("combinedExponents", combinedExponents)
 	}
-	// fmt.Printf("combinedCells: %+v\n", combinedCells)
+	if options.ShowCells {
+		fmt.Println("Combined cells:")
+		utils.PrettyPrintCells(combinedCells)
+		fmt.Print("\n")
+	}
 	return combinedCells
 }

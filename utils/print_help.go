@@ -6,7 +6,7 @@
 /*   By: osalmine <osalmine@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/11/19 22:37:20 by osalmine          #+#    #+#             */
-/*   Updated: 2021/11/19 22:37:33 by osalmine         ###   ########.fr       */
+/*   Updated: 2021/11/23 13:45:15 by osalmine         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,4 +32,5 @@ func PrintHelp() {
 	fmt.Println("-v:\tverbose")
 	fmt.Println("-c:\tdisplay complex solutions")
 	fmt.Println("-s:\tdisplay only the solution(s)")
+	fmt.Println("-d:\tdisplay cells")
 }

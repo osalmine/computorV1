@@ -6,7 +6,7 @@
 /*   By: osalmine <osalmine@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/11/19 18:03:01 by osalmine          #+#    #+#             */
-/*   Updated: 2021/11/19 20:56:20 by osalmine         ###   ########.fr       */
+/*   Updated: 2021/11/23 13:40:03 by osalmine         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -34,21 +34,13 @@ func ParseArgs(args []string) (string, Options) {
 			options.Silent = true
 		} else if arg == "-c" {
 			options.Complex = true
+		} else if arg == "-d" {
+			options.ShowCells = true
 		} else {
 			input = arg
 		}
 	}
-	// fmt.Println("len(input)", len(input))
-	// if len(input) == 0 && !options.help {
-	// 	// fmt.Scanln(&input)
-	// 	scanner := bufio.NewScanner(os.Stdin)
-	// 	for scanner.Scan() {
-	// 		input = scanner.Text()
-	// 		break
-	// 	}
-	// }
 	if len(input) == 0 && !options.Help {
-		// fmt.Scanln(&input)
 		reader := bufio.NewReader(os.Stdin)
 		fmt.Print("Enter a polynomial equation: ")
 
@@ -58,12 +50,6 @@ func ParseArgs(args []string) (string, Options) {
 		}
 		fmt.Print("\n")
 		input = readerInput
-		// input = scanner.Text()
-		// for scanner.Scan() {
-		// 	input = scanner.Text()
-		// 	break
-		// }
 	}
-	// fmt.Println(input)
 	return input, options
 }

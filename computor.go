@@ -6,7 +6,7 @@
 /*   By: osalmine <osalmine@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/11/19 20:46:54 by osalmine          #+#    #+#             */
-/*   Updated: 2021/11/19 20:54:18 by osalmine         ###   ########.fr       */
+/*   Updated: 2021/11/23 13:39:00 by osalmine         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,10 +31,11 @@ type VisualRepresentation struct {
 }
 
 type Options struct {
-	Verbose bool
-	Help    bool
-	Silent  bool
-	Complex bool
+	Verbose   bool
+	Help      bool
+	Silent    bool
+	Complex   bool
+	ShowCells bool
 }
 
 type RawCell struct {
