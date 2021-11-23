@@ -6,7 +6,7 @@
 /*   By: osalmine <osalmine@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/10/30 23:47:39 by osalmine          #+#    #+#             */
-/*   Updated: 2021/11/23 13:48:27 by osalmine         ###   ########.fr       */
+/*   Updated: 2021/11/23 16:04:37 by osalmine         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -75,7 +75,7 @@ func getVariableAndExponent(cell computorV1.Cell, existingCellsString string) st
 	} else {
 		cellsString += "* x"
 	}
-	if cell.Visual.DisplayExponent {
+	if cell.Visual.DisplayExponent || cell.Exponent > 1 {
 		cellsString += fmt.Sprintf("^%d ", cell.Exponent)
 	}
 	if cellsString[len(cellsString)-1] != ' ' {
