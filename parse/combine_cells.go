@@ -6,7 +6,7 @@
 /*   By: osalmine <osalmine@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/10/30 23:47:42 by osalmine          #+#    #+#             */
-/*   Updated: 2021/11/23 16:25:49 by osalmine         ###   ########.fr       */
+/*   Updated: 2021/11/24 20:48:35 by osalmine         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -38,8 +38,6 @@ func combineTwoCells(cell1 Cell, cell2 Cell) Cell {
 }
 
 func CombineCells(cells []Cell, options Options) []Cell {
-	// fmt.Printf("INPUT: %#v\n", cells)
-	// fmt.Printf("OPTIONS: %+v\n", options)
 	var combinedCells []Cell
 	var combinedExponents []int
 	for currentCellIndex, cell := range cells {
@@ -63,6 +61,5 @@ func CombineCells(cells []Cell, options Options) []Cell {
 		utils.PrettyPrintCells(combinedCells)
 		fmt.Print("\n")
 	}
-	// fmt.Printf("\nCELLS: %#v\n", combinedCells)
 	return combinedCells
 }

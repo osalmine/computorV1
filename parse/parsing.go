@@ -6,7 +6,7 @@
 /*   By: osalmine <osalmine@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/10/30 23:47:47 by osalmine          #+#    #+#             */
-/*   Updated: 2021/11/23 15:38:19 by osalmine         ###   ########.fr       */
+/*   Updated: 2021/11/24 20:48:45 by osalmine         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,8 +26,6 @@ func combineRawCellSlices(leftSideRawCells, rightSideRawCells []RawCell) []RawCe
 }
 
 func Parse(input string, options Options) []Cell {
-	// fmt.Println("INPUT:", input)
-	// fmt.Printf("OPTIONS: %+v\n", options)
 	noWhitespacesInput := utils.RemoveWhitespace(input)
 	utils.PrintOnOption(options.Verbose, "Whitespaces removed:", noWhitespacesInput)
 	inputSplitByEquation := utils.SplitByEqual(noWhitespacesInput)
@@ -46,7 +44,6 @@ func Parse(input string, options Options) []Cell {
 	if options.ShowCells {
 		utils.PrettyPrintCells(cells)
 	}
-	// fmt.Printf("CELLS: %#v\n", cells)
 	utils.PrintOnOption(options.Verbose, "Parsing done\n")
 	return cells
 }
