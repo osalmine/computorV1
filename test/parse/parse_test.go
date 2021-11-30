@@ -6,7 +6,7 @@
 /*   By: osalmine <osalmine@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/11/23 13:49:52 by osalmine          #+#    #+#             */
-/*   Updated: 2021/11/24 20:55:59 by osalmine         ###   ########.fr       */
+/*   Updated: 2021/11/30 12:09:38 by osalmine         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -41,7 +41,7 @@ func TestParse(t *testing.T) {
 		},
 		{"    -5*2     *    X   ^0   + 4 *  X^ 1 -9.3*X^2 + X * X - 3^2   =  1* X ^ 0", Options{Verbose: false, Help: false, Silent: false, Complex: false, ShowCells: false},
 			[]Cell{
-				{Coefficient: 9, Exponent: 0, Variable: false, Visual: V{CapitalX: false, DisplayExponent: false}},
+				{Coefficient: -9, Exponent: 0, Variable: false, Visual: V{CapitalX: false, DisplayExponent: false}},
 				{Coefficient: 1, Exponent: 2, Variable: true, Visual: V{CapitalX: true, DisplayExponent: false}},
 				{Coefficient: -9.3, Exponent: 2, Variable: true, Visual: V{CapitalX: true, DisplayExponent: true}},
 				{Coefficient: 4, Exponent: 1, Variable: true, Visual: V{CapitalX: true, DisplayExponent: true}},
@@ -111,13 +111,15 @@ func TestParse(t *testing.T) {
 				{Coefficient: -0, Exponent: 0, Variable: false, Visual: V{CapitalX: false, DisplayExponent: false}},
 			},
 		},
-		{"4+6-5 * 4+2+8x * -2+8x^2 = x^4 - x^4", Options{Verbose: false, Help: false, Silent: false, Complex: false, ShowCells: false},
+		{"(4*6*-5) + 4*2*8x +(-5)^2 + 8^3 - (-2)*8x^2 = x^4 - x^4", Options{Verbose: false, Help: false, Silent: false, Complex: false, ShowCells: false},
 			[]Cell{
-				{Coefficient: 9, Exponent: 0, Variable: false, Visual: V{CapitalX: false, DisplayExponent: false}},
-				{Coefficient: 5, Exponent: 1, Variable: true, Visual: V{CapitalX: false, DisplayExponent: false}},
-				{Coefficient: -1, Exponent: 1, Variable: true, Visual: V{CapitalX: false, DisplayExponent: false}},
-				{Coefficient: 1, Exponent: 2, Variable: true, Visual: V{CapitalX: false, DisplayExponent: true}},
-				{Coefficient: -0, Exponent: 0, Variable: false, Visual: V{CapitalX: false, DisplayExponent: false}},
+				{Coefficient: 16, Exponent: 2, Variable: true, Visual: V{CapitalX: false, DisplayExponent: true}},
+				{Coefficient: 512, Exponent: 0, Variable: false, Visual: V{CapitalX: false, DisplayExponent: false}},
+				{Coefficient: 25, Exponent: 0, Variable: false, Visual: V{CapitalX: false, DisplayExponent: false}},
+				{Coefficient: 64, Exponent: 1, Variable: true, Visual: V{CapitalX: false, DisplayExponent: false}},
+				{Coefficient: -120, Exponent: 0, Variable: false, Visual: V{CapitalX: false, DisplayExponent: false}},
+				{Coefficient: 1, Exponent: 4, Variable: true, Visual: V{CapitalX: false, DisplayExponent: true}},
+				{Coefficient: -1, Exponent: 4, Variable: true, Visual: V{CapitalX: false, DisplayExponent: true}},
 			},
 		},
 	}
