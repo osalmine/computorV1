@@ -6,7 +6,7 @@
 /*   By: osalmine <osalmine@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/10/30 23:48:06 by osalmine          #+#    #+#             */
-/*   Updated: 2021/11/23 13:48:48 by osalmine         ###   ########.fr       */
+/*   Updated: 2021/11/30 12:13:11 by osalmine         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,15 +20,37 @@ func splitBy(r rune) bool {
 	return r == '+' || r == '-'
 }
 
-func SplitByPlusMinus(input string) []string {
+func indexIsBetweenBrackets(index int, bracketPositions []int) bool {
+	for i, bracketPosition := range bracketPositions {
+		if i%2 == 0 {
+			if index >= bracketPosition && index <= bracketPositions[i+1] {
+				return true
+			}
+		}
+	}
+	return false
+}
+
+func SplitByPlusMinus(input string, bracketPositions []int) []string {
 	var output []string
+	var tmp string
+	// fmt.Println("bracketPositions:", bracketPositions)
 	for {
 		if j := strings.LastIndexFunc(input, splitBy); j >= 0 {
-			output = append(output, input[j:])
-			input = input[:j]
+			// fmt.Println("Is", j, "between brackets:", indexIsBetweenBrackets(j, bracketPositions))
+			if !indexIsBetweenBrackets(j, bracketPositions) {
+				// fmt.Println("tmp:", tmp, "input[j:]", input[j:], "added:", input[j:]+tmp)
+				output = append(output, input[j:]+tmp)
+				input = input[:j]
+				tmp = ""
+			} else {
+				tmp += input[j:]
+				input = input[:j]
+			}
 		} else {
 			if len(input) > 0 {
-				output = append(output, input)
+				// fmt.Println("tmp:", tmp, "input", input, "added:", input+tmp)
+				output = append(output, input+tmp)
 			}
 			break
 		}

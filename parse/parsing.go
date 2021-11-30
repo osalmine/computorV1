@@ -6,7 +6,7 @@
 /*   By: osalmine <osalmine@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/10/30 23:47:47 by osalmine          #+#    #+#             */
-/*   Updated: 2021/11/24 20:48:45 by osalmine         ###   ########.fr       */
+/*   Updated: 2021/11/30 12:12:45 by osalmine         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,13 +25,33 @@ func combineRawCellSlices(leftSideRawCells, rightSideRawCells []RawCell) []RawCe
 	return append(leftSideRawCells, rightSideRawCells...)
 }
 
+func getBracketPositions(input string) []int {
+	var output []int
+	var close int
+	for i, char := range input {
+		if char == '(' {
+			if close == 0 {
+				output = append(output, i)
+			}
+			close++
+		}
+		if char == ')' {
+			close--
+			if close == 0 {
+				output = append(output, i)
+			}
+		}
+	}
+	return output
+}
+
 func Parse(input string, options Options) []Cell {
 	noWhitespacesInput := utils.RemoveWhitespace(input)
 	utils.PrintOnOption(options.Verbose, "Whitespaces removed:", noWhitespacesInput)
 	inputSplitByEquation := utils.SplitByEqual(noWhitespacesInput)
 	utils.PrintOnOption(options.Verbose, "Input split by equation:", inputSplitByEquation)
-	splitLeft := utils.SplitByPlusMinus(inputSplitByEquation[0])
-	splitRight := utils.SplitByPlusMinus(inputSplitByEquation[1])
+	splitLeft := utils.SplitByPlusMinus(inputSplitByEquation[0], getBracketPositions(inputSplitByEquation[0]))
+	splitRight := utils.SplitByPlusMinus(inputSplitByEquation[1], getBracketPositions(inputSplitByEquation[1]))
 	utils.PrintOnOption(options.Verbose, "Both sides split by + and -:", splitLeft, splitRight)
 	leftSideRawCells := parseToRawCells(splitLeft)
 	rightSideRawCells := parseToRawCells(splitRight)
