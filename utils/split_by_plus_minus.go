@@ -6,7 +6,7 @@
 /*   By: osalmine <osalmine@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/10/30 23:48:06 by osalmine          #+#    #+#             */
-/*   Updated: 2021/11/30 12:13:11 by osalmine         ###   ########.fr       */
+/*   Updated: 2021/12/07 14:53:29 by osalmine         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -44,7 +44,7 @@ func SplitByPlusMinus(input string, bracketPositions []int) []string {
 				input = input[:j]
 				tmp = ""
 			} else {
-				tmp += input[j:]
+				tmp = input[j:] + tmp
 				input = input[:j]
 			}
 		} else {
