@@ -6,7 +6,7 @@
 /*   By: osalmine <osalmine@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/11/19 21:12:52 by osalmine          #+#    #+#             */
-/*   Updated: 2021/11/30 12:12:28 by osalmine         ###   ########.fr       */
+/*   Updated: 2021/12/07 15:01:42 by osalmine         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -41,78 +41,67 @@ func removeBrackets(str string) string {
 	return output
 }
 
+func captureCoefficientWithoutPower(baseNumber string, coefficients *[]float64) {
+	baseNumber = removeBrackets(baseNumber)
+	if len(baseNumber) > 3 && (!unicode.IsDigit(rune(baseNumber[2])) && baseNumber[2] != '.') {
+		panic("Invalid syntax")
+	}
+	if len(baseNumber) >= 3 {
+		if (baseNumber[0] == '-' && baseNumber[1] == '+') || (baseNumber[0] == '+' && baseNumber[1] == '-') {
+			baseNumber = "-" + string(baseNumber[2:])
+		} else if (baseNumber[0] == '-' && baseNumber[1] == '-') || (baseNumber[0] == '+' && baseNumber[1] == '+') {
+			baseNumber = string(baseNumber[2:])
+		} else if !unicode.IsDigit(rune(baseNumber[2])) && baseNumber[2] != '.' {
+			panic("Invalid syntax")
+		}
+	}
+	value, err := strconv.ParseFloat(baseNumber, 64)
+	if err != nil {
+		panic(err)
+	}
+	*coefficients = append(*coefficients, value)
+}
+
+func captureCoefficientWithPower(originalString string, splittedByPower []string, coefficients *[]float64) {
+	var baseValue string
+	valueBetweenBrackets, found := getStringInBetween(originalString, "(", ")")
+	if found {
+		baseValue = valueBetweenBrackets
+	} else {
+		baseValue = splittedByPower[0]
+	}
+	value, err := strconv.ParseFloat(baseValue, 64)
+	if err != nil {
+		panic(err)
+	}
+	exponent, _ := strconv.Atoi(splittedByPower[1])
+	value = utils.Pow(value, exponent)
+	if originalString[0] == '-' {
+		value = -value
+	}
+	*coefficients = append(*coefficients, value)
+}
+
+func captureCoefficient(str string, coefficients *[]float64) {
+	splittedByPower := utils.SplitByPower(str)
+	if len(splittedByPower) == 1 {
+		captureCoefficientWithoutPower(splittedByPower[0], coefficients)
+	} else {
+		captureCoefficientWithPower(str, splittedByPower, coefficients)
+	}
+}
+
+func addNegativeCoefficient(coefficients *[]float64) {
+	*coefficients = append(*coefficients, -1)
+}
+
 func getCoefficients(input []string) []float64 {
 	var coefficients []float64
 	for _, str := range input {
 		if !strings.Contains(str, "x") && !strings.Contains(str, "X") {
-			// fmt.Println("input before power split:", str)
-			splittedByPower := utils.SplitByPower(str)
-			// fmt.Println("splittedByPower", splittedByPower)
-			baseNumber := splittedByPower[0]
-			// fmt.Println("baseNumber", baseNumber)
-			if len(splittedByPower) == 1 {
-				baseNumber = removeBrackets(baseNumber)
-				// fmt.Println("baseNumber after bracket remove:", baseNumber)
-				if len(baseNumber) > 3 && (!unicode.IsDigit(rune(baseNumber[2])) && baseNumber[2] != '.') {
-					panic("Invalid syntax")
-				}
-				if len(baseNumber) == 3 {
-					if (baseNumber[0] == '-' && baseNumber[1] == '+') || (baseNumber[0] == '+' && baseNumber[1] == '-') {
-						baseNumber = "-" + string(baseNumber[2])
-					} else if (baseNumber[0] == '-' && baseNumber[1] == '-') || (baseNumber[0] == '+' && baseNumber[1] == '+') {
-						baseNumber = string(baseNumber[2])
-					} else {
-						panic("Invalid syntax")
-					}
-				}
-				// fmt.Println("Base number after combine:", baseNumber)
-				value, err := strconv.ParseFloat(baseNumber, 64)
-				if err != nil {
-					panic(err)
-				}
-				if len(splittedByPower) > 1 {
-					exponent, _ := strconv.Atoi(splittedByPower[1])
-					value = utils.Pow(value, exponent)
-				}
-				// fmt.Println("Value added to coefficients:", value)
-				coefficients = append(coefficients, value)
-			} else {
-				valueBetweenBrackets, found := getStringInBetween(str, "(", ")")
-				// valueBetweenBrackets := strings.TrimLeft(strings.TrimRight(baseNumber, ")"), "(")
-				// fmt.Println("valueBetweenBrackets", valueBetweenBrackets, "found:", found)
-				if found {
-					value, err := strconv.ParseFloat(valueBetweenBrackets, 64)
-					if err != nil {
-						panic(err)
-					}
-					// if len(splittedByPower) > 1 {
-					exponent, _ := strconv.Atoi(splittedByPower[1])
-					value = utils.Pow(value, exponent)
-					// }
-					if str[0] == '-' {
-						value = -value
-					}
-					// fmt.Println("Value added to coefficients:", value)
-					coefficients = append(coefficients, value)
-				} else {
-					value, err := strconv.ParseFloat(baseNumber, 64)
-					if err != nil {
-						panic(err)
-					}
-					// if len(splittedByPower) > 1 {
-					exponent, _ := strconv.Atoi(splittedByPower[1])
-					value = utils.Pow(value, exponent)
-					// }
-					if str[0] == '-' {
-						value = -value
-					}
-					// fmt.Println("Value added to coefficients:", value)
-					coefficients = append(coefficients, value)
-				}
-			}
+			captureCoefficient(str, &coefficients)
 		} else if str[0] == '-' {
-			// fmt.Println("Value added to coefficients:", -1)
-			coefficients = append(coefficients, -1)
+			addNegativeCoefficient(&coefficients)
 		}
 	}
 	return coefficients
