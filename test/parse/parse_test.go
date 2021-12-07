@@ -6,7 +6,7 @@
 /*   By: osalmine <osalmine@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/11/23 13:49:52 by osalmine          #+#    #+#             */
-/*   Updated: 2021/11/30 12:09:38 by osalmine         ###   ########.fr       */
+/*   Updated: 2021/12/07 13:51:33 by osalmine         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -120,6 +120,20 @@ func TestParse(t *testing.T) {
 				{Coefficient: -120, Exponent: 0, Variable: false, Visual: V{CapitalX: false, DisplayExponent: false}},
 				{Coefficient: 1, Exponent: 4, Variable: true, Visual: V{CapitalX: false, DisplayExponent: true}},
 				{Coefficient: -1, Exponent: 4, Variable: true, Visual: V{CapitalX: false, DisplayExponent: true}},
+			},
+		},
+		{"5432 + x = 0", Options{Verbose: false, Help: false, Silent: false, Complex: false, ShowCells: false},
+			[]Cell{
+				{Coefficient: 1, Exponent: 1, Variable: true, Visual: V{CapitalX: false, DisplayExponent: false}},
+				{Coefficient: 5432, Exponent: 0, Variable: false, Visual: V{CapitalX: false, DisplayExponent: false}},
+				{Coefficient: -0, Exponent: 0, Variable: false, Visual: V{CapitalX: false, DisplayExponent: false}},
+			},
+		},
+		{"-(-5432) + x = 0", Options{Verbose: false, Help: false, Silent: false, Complex: false, ShowCells: false},
+			[]Cell{
+				{Coefficient: 1, Exponent: 1, Variable: true, Visual: V{CapitalX: false, DisplayExponent: false}},
+				{Coefficient: 5432, Exponent: 0, Variable: false, Visual: V{CapitalX: false, DisplayExponent: false}},
+				{Coefficient: -0, Exponent: 0, Variable: false, Visual: V{CapitalX: false, DisplayExponent: false}},
 			},
 		},
 	}
