@@ -6,7 +6,7 @@
 /*   By: osalmine <osalmine@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/11/19 18:03:01 by osalmine          #+#    #+#             */
-/*   Updated: 2021/11/23 13:40:03 by osalmine         ###   ########.fr       */
+/*   Updated: 2021/12/07 15:11:27 by osalmine         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -36,6 +36,8 @@ func ParseArgs(args []string) (string, Options) {
 			options.Complex = true
 		} else if arg == "-d" {
 			options.ShowCells = true
+		} else if arg == "-n" {
+			options.SciNotation = true
 		} else {
 			input = arg
 		}

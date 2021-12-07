@@ -6,7 +6,7 @@
 /*   By: osalmine <osalmine@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/11/19 21:17:56 by osalmine          #+#    #+#             */
-/*   Updated: 2021/11/23 17:15:24 by osalmine         ###   ########.fr       */
+/*   Updated: 2021/12/07 15:14:25 by osalmine         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,5 +24,9 @@ func calculateLinearEquation(computor Computor) {
 	_, b, c := getABC(computor.Cells)
 	x := -c / b
 	log.SetFlags(0)
-	log.Printf("%.6g\n", x)
+	if computor.Options.SciNotation {
+		log.Printf("%.6e\n", x)
+	} else {
+		log.Printf("%.6g\n", x)
+	}
 }
