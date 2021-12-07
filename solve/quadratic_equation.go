@@ -6,7 +6,7 @@
 /*   By: osalmine <osalmine@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/11/19 21:18:15 by osalmine          #+#    #+#             */
-/*   Updated: 2021/12/07 15:13:51 by osalmine         ###   ########.fr       */
+/*   Updated: 2021/12/07 15:31:08 by osalmine         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -35,7 +35,7 @@ func solveNegativeDiscriminant(computor Computor, equ equation) {
 		if computor.Options.SciNotation {
 			log.Printf("%.6e\n%.6e\n", x1, x2)
 		} else {
-			log.Printf("%.6g\n%.6g\n", x1, x2)
+			log.Printf("%.6f\n%.6f\n", x1, x2)
 		}
 	}
 }
@@ -47,7 +47,7 @@ func solveZeroDiscriminant(computor Computor, equ equation) {
 	if computor.Options.SciNotation {
 		log.Printf("%.6e\n", x)
 	} else {
-		log.Printf("%.6g\n", x)
+		log.Printf("%.6f\n", x)
 	}
 }
 
@@ -59,7 +59,7 @@ func solvePositiveDiscriminant(computor Computor, equ equation) {
 	if computor.Options.SciNotation {
 		log.Printf("%.6e\n%.6e\n", x1, x2)
 	} else {
-		log.Printf("%.6g\n%.6g\n", x1, x2)
+		log.Printf("%.6f\n%.6f\n", x1, x2)
 	}
 }
 
