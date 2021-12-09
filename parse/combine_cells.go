@@ -6,7 +6,7 @@
 /*   By: osalmine <osalmine@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/10/30 23:47:42 by osalmine          #+#    #+#             */
-/*   Updated: 2021/11/24 20:48:35 by osalmine         ###   ########.fr       */
+/*   Updated: 2021/12/09 22:08:03 by osalmine         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -34,6 +34,7 @@ func combineTwoCells(cell1 Cell, cell2 Cell) Cell {
 	combinedCell.Variable = cell1.Variable || cell2.Variable
 	combinedCell.Visual.CapitalX = cell1.Visual.CapitalX || cell2.Visual.CapitalX
 	combinedCell.Visual.DisplayExponent = cell1.Visual.DisplayExponent || cell2.Visual.DisplayExponent
+	combinedCell.Visual.DisplayCoefficient = (cell1.Coefficient+cell2.Coefficient != 1 && cell1.Coefficient+cell2.Coefficient != -1) || cell1.Visual.DisplayCoefficient || cell2.Visual.DisplayCoefficient
 	return combinedCell
 }
 

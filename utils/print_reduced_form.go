@@ -6,7 +6,7 @@
 /*   By: osalmine <osalmine@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/10/30 23:47:39 by osalmine          #+#    #+#             */
-/*   Updated: 2021/11/23 16:04:37 by osalmine         ###   ########.fr       */
+/*   Updated: 2021/12/07 16:01:03 by osalmine         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -55,7 +55,17 @@ func sortCells(cells []computorV1.Cell) []computorV1.Cell {
 	return cells
 }
 
-func getSignedCoefficientString(input float64, index int) string {
+func getSignedCoefficientString(cell computorV1.Cell, index int) string {
+	input := cell.Coefficient
+	if !cell.Visual.DisplayCoefficient {
+		if input < 0 {
+			return "- "
+		}
+		if index == 0 {
+			return ""
+		}
+		return "+ "
+	}
 	if input < 0 {
 		return fmt.Sprintf("- %g ", -input)
 	}
@@ -70,10 +80,13 @@ func getVariableAndExponent(cell computorV1.Cell, existingCellsString string) st
 	if len(existingCellsString) > 0 && existingCellsString[len(existingCellsString)-1] != ' ' {
 		cellsString += " "
 	}
+	if cell.Visual.DisplayCoefficient {
+		cellsString += "* "
+	}
 	if cell.Visual.CapitalX {
-		cellsString += "* X"
+		cellsString += "X"
 	} else {
-		cellsString += "* x"
+		cellsString += "x"
 	}
 	if cell.Visual.DisplayExponent || cell.Exponent > 1 {
 		cellsString += fmt.Sprintf("^%d ", cell.Exponent)
@@ -87,7 +100,7 @@ func getVariableAndExponent(cell computorV1.Cell, existingCellsString string) st
 func cellsToString(cells []computorV1.Cell) string {
 	var cellsString string
 	for i, cell := range cells {
-		cellsString += getSignedCoefficientString(cell.Coefficient, i)
+		cellsString += getSignedCoefficientString(cell, i)
 		if cell.Variable {
 			cellsString += getVariableAndExponent(cell, cellsString)
 		}

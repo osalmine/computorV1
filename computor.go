@@ -6,7 +6,7 @@
 /*   By: osalmine <osalmine@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/11/19 20:46:54 by osalmine          #+#    #+#             */
-/*   Updated: 2021/12/07 15:10:41 by osalmine         ###   ########.fr       */
+/*   Updated: 2021/12/07 15:48:45 by osalmine         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,8 +26,9 @@ type Cell struct {
 }
 
 type VisualRepresentation struct {
-	CapitalX        bool
-	DisplayExponent bool
+	CapitalX           bool
+	DisplayExponent    bool
+	DisplayCoefficient bool
 }
 
 type Options struct {

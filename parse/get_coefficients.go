@@ -6,7 +6,7 @@
 /*   By: osalmine <osalmine@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/11/19 21:12:52 by osalmine          #+#    #+#             */
-/*   Updated: 2021/12/07 15:01:42 by osalmine         ###   ########.fr       */
+/*   Updated: 2021/12/07 16:04:38 by osalmine         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -91,18 +91,20 @@ func captureCoefficient(str string, coefficients *[]float64) {
 	}
 }
 
-func addNegativeCoefficient(coefficients *[]float64) {
+func addNegativeCoefficient(coefficients *[]float64, manualAddedCoefficient *bool) {
 	*coefficients = append(*coefficients, -1)
+	*manualAddedCoefficient = true
 }
 
-func getCoefficients(input []string) []float64 {
+func getCoefficients(input []string) ([]float64, bool) {
 	var coefficients []float64
+	var manualAddedCoefficient bool
 	for _, str := range input {
 		if !strings.Contains(str, "x") && !strings.Contains(str, "X") {
 			captureCoefficient(str, &coefficients)
 		} else if str[0] == '-' {
-			addNegativeCoefficient(&coefficients)
+			addNegativeCoefficient(&coefficients, &manualAddedCoefficient)
 		}
 	}
-	return coefficients
+	return coefficients, manualAddedCoefficient
 }
