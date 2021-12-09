@@ -6,7 +6,7 @@
 /*   By: osalmine <osalmine@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/10/30 23:47:42 by osalmine          #+#    #+#             */
-/*   Updated: 2021/12/09 22:08:03 by osalmine         ###   ########.fr       */
+/*   Updated: 2021/12/09 22:23:41 by osalmine         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -57,6 +57,7 @@ func CombineCells(cells []Cell, options Options) []Cell {
 		}
 		combinedExponents = append(combinedExponents, currentCellExponent)
 	}
+	utils.PrintOnOption(options.Verbose, "Combined cells from", len(cells), " to ", len(combinedCells), "\n")
 	if options.ShowCells {
 		fmt.Println("Combined cells:")
 		utils.PrettyPrintCells(combinedCells)
