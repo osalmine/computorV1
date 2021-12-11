@@ -6,7 +6,7 @@
 /*   By: osalmine <osalmine@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/11/19 21:18:15 by osalmine          #+#    #+#             */
-/*   Updated: 2021/12/07 15:34:16 by osalmine         ###   ########.fr       */
+/*   Updated: 2021/12/11 13:08:10 by osalmine         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -43,6 +43,9 @@ func solveNegativeDiscriminant(computor Computor, equ equation) {
 func solveZeroDiscriminant(computor Computor, equ equation) {
 	utils.PrintOnOption(!computor.Options.Silent, "Discriminant is strictly zero, the one solution is:")
 	x := -equ.b / (2 * equ.a)
+	if x == -0 {
+		x = 0
+	}
 	log.SetFlags(0)
 	if computor.Options.SciNotation {
 		log.Printf("%.6e\n", x)
