@@ -6,7 +6,7 @@
 /*   By: osalmine <osalmine@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/11/23 16:15:24 by osalmine          #+#    #+#             */
-/*   Updated: 2021/12/09 21:59:55 by osalmine         ###   ########.fr       */
+/*   Updated: 2021/12/11 12:50:02 by osalmine         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -113,8 +113,20 @@ func TestCombine(t *testing.T) {
 				{Coefficient: 2, Exponent: 1, Variable: true, Visual: V{CapitalX: false, DisplayExponent: false, DisplayCoefficient: true}},
 			},
 		},
+		{
+			"Input string: 0*x^2*x + x = 5",
+			[]Cell{
+				{Coefficient: 1, Exponent: 1, Variable: true, Visual: V{CapitalX: false, DisplayExponent: false, DisplayCoefficient: false}},
+				{Coefficient: 0, Exponent: 3, Variable: true, Visual: V{CapitalX: false, DisplayExponent: true, DisplayCoefficient: true}},
+				{Coefficient: -5, Exponent: 0, Variable: false, Visual: V{CapitalX: false, DisplayExponent: false, DisplayCoefficient: true}},
+			},
+			Options{Verbose: false, Help: false, Silent: false, Complex: false, ShowCells: false},
+			[]Cell{
+				{Coefficient: 1, Exponent: 1, Variable: true, Visual: V{CapitalX: false, DisplayExponent: false, DisplayCoefficient: false}},
+				{Coefficient: -5, Exponent: 0, Variable: false, Visual: V{CapitalX: false, DisplayExponent: false, DisplayCoefficient: true}},
+			},
+		},
 	}
-
 	for _, test := range tests {
 
 		t.Run(test.name, func(t *testing.T) {
