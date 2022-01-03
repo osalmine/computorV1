@@ -6,7 +6,7 @@
 /*   By: osalmine <osalmine@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/01/03 22:18:35 by osalmine          #+#    #+#             */
-/*   Updated: 2022/01/03 23:24:27 by osalmine         ###   ########.fr       */
+/*   Updated: 2022/01/03 23:40:03 by osalmine         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -98,52 +98,39 @@ func printEquation(upper string, displayA float64, negative bool) {
 	}
 }
 
+func ternary(condition bool, a, b string) string {
+	if condition {
+		return a
+	}
+	return b
+}
+
 func constructUpperPart(elements *equationElements, substract bool) (string, bool) {
 	displayA := elements.displayA
 	displayB := elements.displayB
 	displayRootCo := elements.displayRootCo
 	rootNumber := elements.rootNumber
-	if substract {
-		if displayRootCo != 1 && displayRootCo != -1 && rootNumber == 1 {
-			fmt.Printf("%f - %f = %f\n", displayB, displayRootCo, displayB-displayRootCo)
-			equUpper := displayB - displayRootCo
-			newDivisor := GCD(equUpper, displayA)
-			elements.displayA = displayA / newDivisor
-			equUpper = equUpper / newDivisor
-			return fmt.Sprintf("%g", equUpper), false
-		} else if displayRootCo != 1 && displayRootCo != -1 && rootNumber != 1 {
-			if displayB < 0 {
-				return fmt.Sprintf("%g + %g√%g", -displayB, displayRootCo, rootNumber), true
-			} else {
-				return fmt.Sprintf("%g - %g√%g", displayB, displayRootCo, rootNumber), false
-			}
+	if displayRootCo != 1 && displayRootCo != -1 && rootNumber == 1 { // 5x^2 + 3x - 2 = 0
+		fmt.Printf("%f + %f = %f\n", displayB, displayRootCo, displayB+displayRootCo)
+		equUpper := displayB + displayRootCo
+		if substract {
+			equUpper = displayB - displayRootCo
+		}
+		newDivisor := GCD(equUpper, displayA)
+		elements.displayA = displayA / newDivisor
+		equUpper = equUpper / newDivisor
+		return fmt.Sprintf("%g", equUpper), false
+	} else if displayRootCo != 1 && displayRootCo != -1 && rootNumber != 1 {
+		if displayB < 0 {
+			return fmt.Sprintf("%g %s %g√%g", -displayB, ternary(substract, "+", "-"), displayRootCo, rootNumber), true
 		} else {
-			if displayB < 0 {
-				return fmt.Sprintf("%g + √%g", -displayB, rootNumber), true
-			} else {
-				return fmt.Sprintf("%g - √%g", displayB, rootNumber), false
-			}
+			return fmt.Sprintf("%g %s %g√%g", displayB, ternary(substract, "-", "+"), displayRootCo, rootNumber), false
 		}
 	} else {
-		if displayRootCo != 1 && displayRootCo != -1 && rootNumber == 1 { // 5x^2 + 3x - 2 = 0
-			fmt.Printf("%f + %f = %f\n", displayB, displayRootCo, displayB+displayRootCo)
-			equUpper := displayB + displayRootCo
-			newDivisor := GCD(equUpper, displayA)
-			elements.displayA = displayA / newDivisor
-			equUpper = equUpper / newDivisor
-			return fmt.Sprintf("%g", equUpper), false
-		} else if displayRootCo != 1 && displayRootCo != -1 && rootNumber != 1 {
-			if displayB < 0 {
-				return fmt.Sprintf("%g - %g√%g", -displayB, displayRootCo, rootNumber), true
-			} else {
-				return fmt.Sprintf("%g + %g√%g", displayB, displayRootCo, rootNumber), false
-			}
+		if displayB < 0 {
+			return fmt.Sprintf("%g %s √%g", -displayB, ternary(substract, "+", "-"), rootNumber), true
 		} else {
-			if displayB < 0 {
-				return fmt.Sprintf("%g - √%g", -displayB, rootNumber), true
-			} else {
-				return fmt.Sprintf("%g + √%g", displayB, rootNumber), false
-			}
+			return fmt.Sprintf("%g %s √%g", displayB, ternary(substract, "-", "+"), rootNumber), false
 		}
 	}
 }
