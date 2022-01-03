@@ -6,14 +6,13 @@
 /*   By: osalmine <osalmine@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/11/19 21:18:15 by osalmine          #+#    #+#             */
-/*   Updated: 2022/01/03 22:26:40 by osalmine         ###   ########.fr       */
+/*   Updated: 2022/01/03 23:42:09 by osalmine         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 package solve
 
 import (
-	"fmt"
 	"log"
 	"math"
 	"math/cmplx"
@@ -26,9 +25,7 @@ type equation = computorV1.Equation
 
 func printSolveNegativeDiscriminant(computor Computor, equ equation, x complex128, substract bool) {
 	log.SetFlags(0)
-	// fmt.Println("X INITIAL SOLUTION:", x)
 	if computor.Options.IrrFraction {
-		fmt.Printf("EQU: %#v\n", equ)
 		utils.PrintIrreducibleFraction(equ, substract, true)
 	} else if computor.Options.SciNotation {
 		log.Printf("%.6e\n", x)
@@ -68,9 +65,7 @@ func solveZeroDiscriminant(computor Computor, equ equation) {
 
 func printSolvePositiveDiscriminant(computor Computor, equ equation, x float64, substract bool) {
 	log.SetFlags(0)
-	// fmt.Println("X INITIAL SOLUTION:", x)
 	if computor.Options.IrrFraction && x != math.Trunc(x) {
-		fmt.Printf("EQU: %#v\n", equ)
 		utils.PrintIrreducibleFraction(equ, substract, false)
 	} else if computor.Options.SciNotation {
 		log.Printf("%.6e\n", x)
