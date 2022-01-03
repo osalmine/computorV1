@@ -6,7 +6,7 @@
 /*   By: osalmine <osalmine@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/11/19 20:46:54 by osalmine          #+#    #+#             */
-/*   Updated: 2021/12/07 15:48:45 by osalmine         ###   ########.fr       */
+/*   Updated: 2022/01/03 22:23:40 by osalmine         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -38,6 +38,7 @@ type Options struct {
 	Complex     bool
 	ShowCells   bool
 	SciNotation bool
+	IrrFraction bool
 }
 
 type RawCell struct {
@@ -45,4 +46,8 @@ type RawCell struct {
 	Exponents     []int
 	Coefficients  []float64
 	Visual        VisualRepresentation
+}
+
+type Equation struct {
+	A, B, C, Discriminant float64
 }

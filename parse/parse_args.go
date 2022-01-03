@@ -6,7 +6,7 @@
 /*   By: osalmine <osalmine@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/11/19 18:03:01 by osalmine          #+#    #+#             */
-/*   Updated: 2021/12/07 15:11:27 by osalmine         ###   ########.fr       */
+/*   Updated: 2021/12/14 21:18:14 by osalmine         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -38,6 +38,8 @@ func ParseArgs(args []string) (string, Options) {
 			options.ShowCells = true
 		} else if arg == "-n" {
 			options.SciNotation = true
+		} else if arg == "-f" {
+			options.IrrFraction = true
 		} else {
 			input = arg
 		}

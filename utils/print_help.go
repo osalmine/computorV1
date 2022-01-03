@@ -6,7 +6,7 @@
 /*   By: osalmine <osalmine@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/11/19 22:37:20 by osalmine          #+#    #+#             */
-/*   Updated: 2021/12/07 15:15:57 by osalmine         ###   ########.fr       */
+/*   Updated: 2021/12/14 21:19:48 by osalmine         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,6 +26,8 @@ func PrintHelp() {
 	fmt.Println("For example: 5 * X^0 + 4 * X^1 - 9.3 * X^2 = 1 * X^0")
 	fmt.Println("You can also input it in natural form: 5 + 4x + x^2 = 0")
 	fmt.Println("and use capital or non-capital X as variable")
+	fmt.Printf("\n")
+	fmt.Println("With -f option you can get the result in fraction form")
 	fmt.Printf("\n\n")
 	fmt.Println("Options:")
 	fmt.Println("\n-h:\tdisplay help")
@@ -34,4 +36,5 @@ func PrintHelp() {
 	fmt.Println("-s:\tdisplay only the solution(s)")
 	fmt.Println("-d:\tdisplay cells")
 	fmt.Println("-n:\tuse scientific notation")
+	fmt.Println("-f:\tprint output as irreducible fraction")
 }
