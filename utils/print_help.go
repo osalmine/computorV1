@@ -6,7 +6,7 @@
 /*   By: osalmine <osalmine@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/11/19 22:37:20 by osalmine          #+#    #+#             */
-/*   Updated: 2021/12/14 21:19:48 by osalmine         ###   ########.fr       */
+/*   Updated: 2022/01/04 19:15:00 by osalmine         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -34,7 +34,7 @@ func PrintHelp() {
 	fmt.Println("-v:\tverbose")
 	fmt.Println("-c:\tdisplay complex solutions")
 	fmt.Println("-s:\tdisplay only the solution(s)")
-	fmt.Println("-d:\tdisplay cells")
+	fmt.Println("-d:\tdisplay cells (debug)")
 	fmt.Println("-n:\tuse scientific notation")
 	fmt.Println("-f:\tprint output as irreducible fraction")
 }
