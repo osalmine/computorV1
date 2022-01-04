@@ -6,7 +6,7 @@
 /*   By: osalmine <osalmine@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/01/03 22:18:35 by osalmine          #+#    #+#             */
-/*   Updated: 2022/01/04 19:35:40 by osalmine         ###   ########.fr       */
+/*   Updated: 2022/01/04 19:38:40 by osalmine         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -96,7 +96,7 @@ func constructUpperPart(elements *equationElements, substract bool) (string, boo
 	displayB := elements.displayB
 	displayRootCo := elements.displayRootCo
 	rootNumber := elements.rootNumber
-	if displayRootCo != 1 && displayRootCo != -1 && rootNumber == 1 { // 5x^2 + 3x - 2 = 0
+	if displayRootCo != 1 && displayRootCo != -1 && rootNumber == 1 {
 		equUpper := displayB + displayRootCo
 		if substract {
 			equUpper = displayB - displayRootCo
