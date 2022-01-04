@@ -6,7 +6,7 @@
 /*   By: osalmine <osalmine@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/12/13 23:48:18 by osalmine          #+#    #+#             */
-/*   Updated: 2021/12/14 21:50:15 by osalmine         ###   ########.fr       */
+/*   Updated: 2022/01/04 19:26:41 by osalmine         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,6 +16,9 @@ import "math"
 
 func FactorNumber(input float64) []float64 {
 	var factors []float64
+	if input != math.Trunc(input) {
+		return []float64{input}
+	}
 	if input == 1 {
 		return []float64{1}
 	}
