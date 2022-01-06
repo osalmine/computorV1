@@ -6,7 +6,7 @@
 /*   By: osalmine <osalmine@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/11/19 20:48:24 by osalmine          #+#    #+#             */
-/*   Updated: 2021/12/15 19:59:35 by osalmine         ###   ########.fr       */
+/*   Updated: 2022/01/06 22:39:54 by osalmine         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,6 +31,6 @@ func Solve(computor Computor) {
 	} else if computor.PolynomialDegree == 1 {
 		calculateLinearEquation(computor)
 	} else {
-		utils.PrintOnOption(!computor.Options.Silent, "All real numbers are the solution")
+		calculateNoVariables(computor)
 	}
 }
