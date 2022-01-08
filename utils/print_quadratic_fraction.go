@@ -6,7 +6,7 @@
 /*   By: osalmine <osalmine@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/01/03 22:18:35 by osalmine          #+#    #+#             */
-/*   Updated: 2022/01/08 17:57:35 by osalmine         ###   ########.fr       */
+/*   Updated: 2022/01/08 18:06:25 by osalmine         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -123,10 +123,14 @@ func constructUpperPart(elements *equationElements, substract bool) (string, boo
 		if substract {
 			equUpper = displayB - displayRootCo
 		}
+		negative := equUpper < 0
+		if negative {
+			equUpper *= -1
+		}
 		newDivisor := GCD(equUpper, displayA)
 		elements.displayA = displayA / newDivisor
 		equUpper = equUpper / newDivisor
-		return fmt.Sprintf("%g", equUpper), false
+		return fmt.Sprintf("%g", equUpper), negative
 	} else if displayRootCo != 1 && displayRootCo != -1 && rootNumber != 1 {
 		if displayB < 0 {
 			return fmt.Sprintf("%g %s %g√%g", -displayB, ternary(substract, "+", "-"), displayRootCo, rootNumber), true
