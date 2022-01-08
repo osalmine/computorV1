@@ -6,7 +6,7 @@
 /*   By: osalmine <osalmine@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/01/03 22:18:35 by osalmine          #+#    #+#             */
-/*   Updated: 2022/01/04 19:38:40 by osalmine         ###   ########.fr       */
+/*   Updated: 2022/01/08 17:57:35 by osalmine         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -63,22 +63,44 @@ func transformToDisplay(equ equation) equationElements {
 }
 
 func getWidth(upper string, displayA float64) int {
-	if len(upper)-2 > len(fmt.Sprintf("%g", displayA)) {
-		return len(upper) - 2
+	sqrtSymbolExtraLen := 2
+	if !strings.Contains(upper, "√") {
+		sqrtSymbolExtraLen = 0
+	}
+	if len(upper)-sqrtSymbolExtraLen > len(fmt.Sprintf("%g", displayA)) {
+		return len(upper) - sqrtSymbolExtraLen
 	} else {
 		return len(fmt.Sprintf("%g", displayA))
 	}
 }
 
+func getPadding(upper string, displayA float64, width int) (int, int) {
+	var upperPadding int
+	var lowerPadding int
+	sqrtSymbolExtraLen := 2
+	if !strings.Contains(upper, "√") {
+		sqrtSymbolExtraLen = 0
+	}
+	if len(upper)-sqrtSymbolExtraLen > len(fmt.Sprintf("%g", displayA)) {
+		upperPadding = 0
+		lowerPadding = (width + len(fmt.Sprintf("%g", displayA))) / 2
+		return upperPadding, lowerPadding
+	} else {
+		upperPadding = (width + len(upper)) / 2
+		lowerPadding = 0
+		return upperPadding, lowerPadding
+	}
+}
+
 func printEquation(upper string, displayA float64, negative bool) {
 	width := getWidth(upper, displayA)
-	lowerPadding := (width + len(fmt.Sprintf("%g", displayA))) / 2
+	upperPadding, lowerPadding := getPadding(upper, displayA, width)
 	if negative {
-		log.Println(" ", upper)
+		log.Printf("  %*s", upperPadding, upper)
 		log.Println("-", strings.Repeat("-", width))
 		log.Printf("  %*g\n", lowerPadding, displayA)
 	} else {
-		log.Println(upper)
+		log.Printf("%*s", upperPadding, upper)
 		log.Println(strings.Repeat("-", width))
 		log.Printf("%*g\n", lowerPadding, displayA)
 	}
@@ -96,7 +118,7 @@ func constructUpperPart(elements *equationElements, substract bool) (string, boo
 	displayB := elements.displayB
 	displayRootCo := elements.displayRootCo
 	rootNumber := elements.rootNumber
-	if displayRootCo != 1 && displayRootCo != -1 && rootNumber == 1 {
+	if rootNumber == 1 {
 		equUpper := displayB + displayRootCo
 		if substract {
 			equUpper = displayB - displayRootCo
