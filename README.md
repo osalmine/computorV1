@@ -8,6 +8,8 @@ Grade:
 
 ![lem_in grade](https://badge42.herokuapp.com/api/project/osalmine/ComputorV1)
 
+**SEE [SUBJECT](en.subject.pdf) FOR MORE DETAILS**
+
 ## Usage
 
 This project is written with go, so you need that installed
