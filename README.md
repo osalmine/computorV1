@@ -6,7 +6,7 @@ ComputorV1 solves equations up to the second degree.
 
 Grade:
 
-![lem_in grade](https://badge42.herokuapp.com/api/project/osalmine/ComputorV1)
+[![osalmine's computorV1 Score](https://badge42.vercel.app/api/v2/cl2gijtz7003009mofz5pnp5t/project/2392373)](https://github.com/JaeSeoKim/badge42)
 
 **SEE [SUBJECT](en.subject.pdf) FOR MORE DETAILS**
 
