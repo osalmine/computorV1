@@ -22,7 +22,7 @@ After cloning, `make` compiles the executable `computorV1`
 
 `make re` removes the executable and recompiles
 
-`./computorV1 -h` displays the help message
+`./computor -h` displays the help message
 
 ## How it works
 
